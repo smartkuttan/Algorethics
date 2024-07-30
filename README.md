@@ -1,5 +1,7 @@
 # Algoethics AI Library
 
+<img src="https://github.com/smartkuttan/Algoethics/blob/main/Algoethics.png" align="center" width="150">
+
 **Inspired by the Universal Catholic Church's Rome Call for AI Ethics**
 
 Algoethics AI Library is a Python library designed to help AI developers ensure their projects adhere to ethical principles. This initiative emphasizes creating AI systems that respect human dignity, promote inclusion, ensure transparency, and uphold responsibility.
