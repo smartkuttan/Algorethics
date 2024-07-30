@@ -1,17 +1,8 @@
 # algorethics.py
-"""
-Algorethics AI Library
-
-Developed by:
-Stephen Antony Venansious
-Email: steve@techgeek.co.in
-
-This Python library is designed to help AI developers ensure their projects adhere to ethical principles.
-Inspired by the Universal Catholic Church's Rome Call for AI Ethics.
-"""
 
 class Algorethics:
     def __init__(self):
+        # Dictionary to hold the policies
         self.policies = {
             'privacy': None,
             'transparency': None,
@@ -21,65 +12,106 @@ class Algorethics:
             'reliability': None
         }
 
-    def add_privacy_policy(self, policy_function):
-        """Add a privacy policy function."""
-        self.policies['privacy'] = policy_function
+    def add_privacy_policy(self, func):
+        """Add a function to validate privacy policies."""
+        self.policies['privacy'] = func
 
-    def add_transparency_policy(self, policy_function):
-        """Add a transparency policy function."""
-        self.policies['transparency'] = policy_function
+    def add_transparency_policy(self, func):
+        """Add a function to validate transparency policies."""
+        self.policies['transparency'] = func
 
-    def add_inclusion_policy(self, policy_function):
-        """Add an inclusion policy function."""
-        self.policies['inclusion'] = policy_function
+    def add_inclusion_policy(self, func):
+        """Add a function to validate inclusion policies."""
+        self.policies['inclusion'] = func
 
-    def add_responsibility_policy(self, policy_function):
-        """Add a responsibility policy function."""
-        self.policies['responsibility'] = policy_function
+    def add_responsibility_policy(self, func):
+        """Add a function to validate responsibility policies."""
+        self.policies['responsibility'] = func
 
-    def add_impartiality_policy(self, policy_function):
-        """Add an impartiality policy function."""
-        self.policies['impartiality'] = policy_function
+    def add_impartiality_policy(self, func):
+        """Add a function to validate impartiality policies."""
+        self.policies['impartiality'] = func
 
-    def add_reliability_policy(self, policy_function):
-        """Add a reliability policy function."""
-        self.policies['reliability'] = policy_function
+    def add_reliability_policy(self, func):
+        """Add a function to validate reliability policies."""
+        self.policies['reliability'] = func
 
     def validate(self, data, model, action, system):
-        """
-        Validate an AI project against the defined policies.
+        """Validate an AI project against all policies."""
+        results = {
+            'privacy': True,
+            'transparency': True,
+            'inclusion': True,
+            'responsibility': True,
+            'impartiality': True,
+            'reliability': True
+        }
 
-        Parameters:
-        - data: The data to validate (used for privacy, inclusion, impartiality).
-        - model: The AI model to validate (used for transparency).
-        - action: The action taken by the AI (used for responsibility).
-        - system: The AI system status (used for reliability).
+        # Check each policy if it exists
+        for key, func in self.policies.items():
+            if func:
+                if key == 'privacy':
+                    results['privacy'] = func(data)
+                elif key == 'transparency':
+                    results['transparency'] = func(model)
+                elif key == 'inclusion':
+                    results['inclusion'] = func(data)
+                elif key == 'responsibility':
+                    results['responsibility'] = func(action)
+                elif key == 'impartiality':
+                    results['impartiality'] = func(data)
+                elif key == 'reliability':
+                    results['reliability'] = func(system)
 
-        Returns:
-        - bool: True if all policies are satisfied, False otherwise.
-        """
-        # Check privacy policy
-        if self.policies['privacy'] and not self.policies['privacy'](data):
-            return False
+        return all(results.values())
 
-        # Check transparency policy
-        if self.policies['transparency'] and not self.policies['transparency'](model):
-            return False
+# Example Policy Functions
 
-        # Check inclusion policy
-        if self.policies['inclusion'] and not self.policies['inclusion'](data):
-            return False
+def privacy_policy_example(data):
+    """Ensure that sensitive information is not included in the data."""
+    return not any(key in data for key in ["private", "confidential", "secret"])
 
-        # Check responsibility policy
-        if self.policies['responsibility'] and not self.policies['responsibility'](action):
-            return False
+def transparency_policy_example(model):
+    """Ensure that the AI model is explainable."""
+    return hasattr(model, 'explainability')
 
-        # Check impartiality policy
-        if self.policies['impartiality'] and not self.policies['impartiality'](data):
-            return False
+def inclusion_policy_example(data):
+    """Ensure that no individual is excluded based on discriminatory attributes."""
+    return all(item.get("status") != "excluded" for item in data)
 
-        # Check reliability policy
-        if self.policies['reliability'] and not self.policies['reliability'](system):
-            return False
+def responsibility_policy_example(action):
+    """Ensure that there is accountability for actions taken by the AI."""
+    return action.get("responsible_party") is not None
 
-        return True
+def impartiality_policy_example(data):
+    """Ensure that the AI system does not create or follow biases."""
+    return all(item.get("bias") == 0 for item in data)
+
+def reliability_policy_example(system):
+    """Ensure that the AI system maintains high reliability."""
+    return system.get("uptime", 0) > 99.9
+
+# If running this module directly, you can test the library with example data
+if __name__ == "__main__":
+    # Initialize the Algorethics class
+    ai_lib = Algorethics()
+
+    # Add policies to the library
+    ai_lib.add_privacy_policy(privacy_policy_example)
+    ai_lib.add_transparency_policy(transparency_policy_example)
+    ai_lib.add_inclusion_policy(inclusion_policy_example)
+    ai_lib.add_responsibility_policy(responsibility_policy_example)
+    ai_lib.add_impartiality_policy(impartiality_policy_example)
+    ai_lib.add_reliability_policy(reliability_policy_example)
+
+    # Example data, model, action, and system for validation
+    data = [{"status": "included", "bias": 0}]
+    model = {"explainability": True}
+    action = {"responsible_party": "team_lead"}
+    system = {"uptime": 99.95}
+
+    # Validate the AI project
+    if ai_lib.validate(data, model, action, system):
+        print("AI project is ethically compliant")
+    else:
+        print("AI project is not ethically compliant")
