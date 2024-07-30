@@ -5,9 +5,21 @@
 
 **Inspired by the Universal Catholic Church's Rome Call for AI Ethics**
 
-Algorethics AI Library is a Python library designed to help AI developers ensure their projects adhere to ethical principles. This initiative emphasizes creating AI systems that respect human dignity, promote inclusion, ensure transparency, and uphold responsibility.
 
-## Features
+**Algorethics AI Library** is a Python library crafted to assist AI developers in aligning their projects with ethical principles inspired by faith. This initiative focuses on creating AI systems that honor human dignity, promote inclusion, ensure transparency, and uphold responsibility.
+
+As Scripture guides us:
+
+- **Respecting Human Dignity:** "So God created mankind in his own image, in the image of God he created them; male and female he created them." (Genesis 1:27)
+
+- **Promoting Inclusion:** "The body is a unit, though it is made up of many parts; and though all its parts are many, they form one body. So it is with Christ." (1 Corinthians 12:12)
+
+- **Ensuring Transparency:** "For nothing is hidden that will not become evident, nor anything secret that will not be known and come to light." (Luke 8:17)
+
+- **Upholding Responsibility:** "Everyone to whom much was given, of him much will be required; and from him to whom they entrusted much, they will demand the more." (Luke 12:48)
+
+
+## Key Features
 
 - **Privacy Policies**: Ensure the protection of sensitive information.
 - **Transparency Policies**: Guarantee that AI models are explainable and understandable.
