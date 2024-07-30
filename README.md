@@ -153,5 +153,8 @@ We welcome contributions from the community to enhance the functionality and rea
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
+<!-- Footer -->
+<div align="center">
+  <img src="https://github.com/smartkuttan/Algoethics/blob/main/Romecall.jpg" alt="Romecall" width="600">
+</div>
 By adhering to the ethical guidelines set forth in the Rome Call for AI Ethics, Algoethics AI Library aims to foster a future where AI serves humanity responsibly and respectfully. Join us in this mission to build a more ethical AI landscape.
