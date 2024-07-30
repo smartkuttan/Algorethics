@@ -1,6 +1,6 @@
 # Algoethics AI Library
-
-<img src="https://github.com/smartkuttan/Algoethics/blob/main/Algoethics.png" align="center" width="450">
+<div align="center">
+<img src="https://github.com/smartkuttan/Algoethics/blob/main/Algoethics.png" align="center" width="450"> </div>
 
 **Inspired by the Universal Catholic Church's Rome Call for AI Ethics**
 
