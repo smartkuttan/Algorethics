@@ -5,7 +5,6 @@
 
 **Inspired by the Universal Catholic Church's Rome Call for AI Ethics**
 
-
 **Algorethics AI Library** is a Python library crafted to assist AI developers in aligning their projects with ethical principles inspired by faith. This initiative focuses on creating AI systems that honor human dignity, promote inclusion, ensure transparency, and uphold responsibility.
 
 As Scripture guides us:
@@ -157,6 +156,12 @@ else:
     print("AI project is not ethically compliant")
 ```
 
+## Key Updates
+
+- **Added Policy Functions**: Each function now represents a specific policy related to the Rome Call for AI Ethics principles.
+- **Integration of Policies**: The Algorethics class allows you to add and validate against various policies to ensure comprehensive compliance.
+- **Sample Usage**: Demonstrates how to use the library to validate an AI project with example data.
+
 ## Contributing
 
 We welcome contributions from the community to enhance the functionality and reach of Algorethics. Please feel free to fork this repository, submit pull requests, and raise issues.
@@ -182,7 +187,6 @@ For more information about the Rome Call, visit [Rome Call for AI Ethics](https:
 - **Twitter:** [Follow the Rome Call on Twitter](https://twitter.com/call_rome)
 - **YouTube:** [Watch related videos on YouTube](https://www.youtube.com/channel/UCcoTSMAX1vLc47z5z7yPO6g)
 - **Download Rome Call Document:** [Download the Rome Call Paper](https://www.romecall.org/wp-content/uploads/2022/03/RomeCall_Paper_web.pdf)
-
 
 By adhering to the ethical guidelines set forth in the Rome Call for AI Ethics, Algorethics AI Library aims to foster a future where AI serves humanity responsibly and respectfully. Join us in this mission to build a more ethical AI landscape.
 ```
