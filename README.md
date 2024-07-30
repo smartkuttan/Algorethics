@@ -1,10 +1,14 @@
-# Algoethics AI Library
+
+
+```markdown
+# Algorethics AI Library
 <div align="center">
-<img src="https://github.com/smartkuttan/Algoethics/blob/main/Algoethics.png" align="center" width="450"> </div>
+  <img src="https://github.com/smartkuttan/Algorethics/blob/main/Algorethics.png" align="center" width="450">
+</div>
 
 **Inspired by the Universal Catholic Church's Rome Call for AI Ethics**
 
-Algoethics AI Library is a Python library designed to help AI developers ensure their projects adhere to ethical principles. This initiative emphasizes creating AI systems that respect human dignity, promote inclusion, ensure transparency, and uphold responsibility.
+Algorethics AI Library is a Python library designed to help AI developers ensure their projects adhere to ethical principles. This initiative emphasizes creating AI systems that respect human dignity, promote inclusion, ensure transparency, and uphold responsibility.
 
 ## Features
 
@@ -17,15 +21,15 @@ Algoethics AI Library is a Python library designed to help AI developers ensure 
 
 ## Installation
 
-To install Algoethics, use pip:
+To install Algorethics, use pip:
 
 ```bash
-pip install algoethics
+pip install algorethics
 ```
 
 ## Usage
 
-Here's an example of how to use the Algoethics AI Library in your project:
+Here's an example of how to use the Algorethics AI Library in your project:
 
 ### Step 1: Define Ethical Policies
 
@@ -57,15 +61,15 @@ def reliability_policy_example(system):
     return system.get("uptime", 0) > 99.9
 ```
 
-### Step 2: Initialize Algoethics and Add Policies
+### Step 2: Initialize Algorethics and Add Policies
 
-Create an instance of the `Algoethics` class and add the defined policies.
+Create an instance of the `Algorethics` class and add the defined policies.
 
 ```python
-from algoethics import Algoethics
+from algorethics import Algorethics
 
-# Initialize the Algoethics class
-ai_lib = Algoethics()
+# Initialize the Algorethics class
+ai_lib = Algorethics()
 
 # Add policies to the library
 ai_lib.add_privacy_policy(privacy_policy_example)
@@ -99,7 +103,7 @@ else:
 Combining all steps into a complete example:
 
 ```python
-from algoethics import Algoethics
+from algorethics import Algorethics
 
 # Define ethical policies
 def privacy_policy_example(data):
@@ -120,8 +124,8 @@ def impartiality_policy_example(data):
 def reliability_policy_example(system):
     return system.get("uptime", 0) > 99.9
 
-# Initialize Algoethics
-ai_lib = Algoethics()
+# Initialize Algorethics
+ai_lib = Algorethics()
 
 # Add policies
 ai_lib.add_privacy_policy(privacy_policy_example)
@@ -146,7 +150,7 @@ else:
 
 ## Contributing
 
-We welcome contributions from the community to enhance the functionality and reach of Algoethics. Please feel free to fork this repository, submit pull requests, and raise issues.
+We welcome contributions from the community to enhance the functionality and reach of Algorethics. Please feel free to fork this repository, submit pull requests, and raise issues.
 
 ## License
 
@@ -155,6 +159,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 <!-- Footer -->
 <div align="center">
-  <img src="https://github.com/smartkuttan/Algoethics/blob/main/Romecall.jpg" alt="Romecall" width="600">
+  <img src="https://github.com/smartkuttan/Algorethics/blob/main/Romecall.jpg" alt="Romecall" width="600">
 </div>
-By adhering to the ethical guidelines set forth in the Rome Call for AI Ethics, Algoethics AI Library aims to foster a future where AI serves humanity responsibly and respectfully. Join us in this mission to build a more ethical AI landscape.
+By adhering to the ethical guidelines set forth in the Rome Call for AI Ethics, Algorethics AI Library aims to foster a future where AI serves humanity responsibly and respectfully. Join us in this mission to build a more ethical AI landscape.
+```
+
