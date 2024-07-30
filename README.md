@@ -1,6 +1,3 @@
-
-
-```markdown
 # Algorethics AI Library
 <div align="center">
   <img src="https://github.com/smartkuttan/Algorethics/blob/main/Algorethics.png" align="center" width="450">
