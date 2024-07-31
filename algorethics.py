@@ -1,102 +1,122 @@
-# algorethics.py
+# Algorethics.py
+# Steve@techgeek.co.in
+
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class Algorethics:
     def __init__(self):
-        # Dictionary to hold the policies
-        self.policies = {
-            'privacy': None,
-            'transparency': None,
-            'inclusion': None,
-            'responsibility': None,
-            'impartiality': None,
-            'reliability': None
-        }
+        self.privacy_policies = []
+        self.transparency_policies = []
+        self.inclusion_policies = []
+        self.responsibility_policies = []
+        self.impartiality_policies = []
+        self.reliability_policies = []
 
-    def add_privacy_policy(self, func):
-        """Add a function to validate privacy policies."""
-        self.policies['privacy'] = func
+    def add_privacy_policy(self, policy_func):
+        self.privacy_policies.append(policy_func)
 
-    def add_transparency_policy(self, func):
-        """Add a function to validate transparency policies."""
-        self.policies['transparency'] = func
+    def add_transparency_policy(self, policy_func):
+        self.transparency_policies.append(policy_func)
 
-    def add_inclusion_policy(self, func):
-        """Add a function to validate inclusion policies."""
-        self.policies['inclusion'] = func
+    def add_inclusion_policy(self, policy_func):
+        self.inclusion_policies.append(policy_func)
 
-    def add_responsibility_policy(self, func):
-        """Add a function to validate responsibility policies."""
-        self.policies['responsibility'] = func
+    def add_responsibility_policy(self, policy_func):
+        self.responsibility_policies.append(policy_func)
 
-    def add_impartiality_policy(self, func):
-        """Add a function to validate impartiality policies."""
-        self.policies['impartiality'] = func
+    def add_impartiality_policy(self, policy_func):
+        self.impartiality_policies.append(policy_func)
 
-    def add_reliability_policy(self, func):
-        """Add a function to validate reliability policies."""
-        self.policies['reliability'] = func
+    def add_reliability_policy(self, policy_func):
+        self.reliability_policies.append(policy_func)
 
     def validate(self, data, model, action, system):
-        """Validate an AI project against all policies."""
-        results = {
-            'privacy': True,
-            'transparency': True,
-            'inclusion': True,
-            'responsibility': True,
-            'impartiality': True,
-            'reliability': True
+        all_policies = {
+            'Privacy': self.privacy_policies,
+            'Transparency': self.transparency_policies,
+            'Inclusion': self.inclusion_policies,
+            'Responsibility': self.responsibility_policies,
+            'Impartiality': self.impartiality_policies,
+            'Reliability': self.reliability_policies
         }
 
-        # Check each policy if it exists
-        for key, func in self.policies.items():
-            if func:
-                if key == 'privacy':
-                    results['privacy'] = func(data)
-                elif key == 'transparency':
-                    results['transparency'] = func(model)
-                elif key == 'inclusion':
-                    results['inclusion'] = func(data)
-                elif key == 'responsibility':
-                    results['responsibility'] = func(action)
-                elif key == 'impartiality':
-                    results['impartiality'] = func(data)
-                elif key == 'reliability':
-                    results['reliability'] = func(system)
+        for policy_type, policies in all_policies.items():
+            for policy in policies:
+                if not policy(data, model, action, system):
+                    logger.warning(f"{policy_type} policy validation failed.")
+                    return False
 
-        return all(results.values())
+        logger.info("All policies validated successfully.")
+        return True
 
-# Example Policy Functions
+def privacy_policy_example(data, model, action, system):
+    sensitive_keywords = ["private", "confidential", "secret", "ssn", "password", "credit_card"]
 
-def privacy_policy_example(data):
-    """Ensure that sensitive information is not included in the data."""
-    return not any(key in data for key in ["private", "confidential", "secret"])
+    def check_sensitive_info(data):
+        if isinstance(data, dict):
+            for key, value in data.items():
+                if key.lower() in sensitive_keywords:
+                    logger.warning(f"Sensitive information detected: {key}")
+                    return False
+                if isinstance(value, (dict, list)):
+                    if not check_sensitive_info(value):
+                        return False
+        elif isinstance(data, list):
+            for item in data:
+                if not check_sensitive_info(item):
+                    return False
+        return True
 
-def transparency_policy_example(model):
-    """Ensure that the AI model is explainable."""
-    return hasattr(model, 'explainability')
+    return check_sensitive_info(data)
 
-def inclusion_policy_example(data):
-    """Ensure that no individual is excluded based on discriminatory attributes."""
-    return all(item.get("status") != "excluded" for item in data)
+def transparency_policy_example(data, model, action, system):
+    if hasattr(model, 'explainability'):
+        logger.info("Model is explainable.")
+        return True
+    else:
+        logger.warning("Model is not explainable.")
+        return False
 
-def responsibility_policy_example(action):
-    """Ensure that there is accountability for actions taken by the AI."""
-    return action.get("responsible_party") is not None
+def inclusion_policy_example(data, model, action, system):
+    for item in data:
+        if item.get("status") == "excluded":
+            logger.warning(f"Discriminatory exclusion detected: {item}")
+            return False
+    logger.info("No discriminatory exclusions detected.")
+    return True
 
-def impartiality_policy_example(data):
-    """Ensure that the AI system does not create or follow biases."""
-    return all(item.get("bias") == 0 for item in data)
+def responsibility_policy_example(data, model, action, system):
+    if action.get("responsible_party") is not None:
+        logger.info("Action is accountable.")
+        return True
+    else:
+        logger.warning("Action is not accountable.")
+        return False
 
-def reliability_policy_example(system):
-    """Ensure that the AI system maintains high reliability."""
-    return system.get("uptime", 0) > 99.9
+def impartiality_policy_example(data, model, action, system):
+    for item in data:
+        if item.get("bias") != 0:
+            logger.warning(f"Bias detected: {item}")
+            return False
+    logger.info("No biases detected.")
+    return True
 
-# If running this module directly, you can test the library with example data
+def reliability_policy_example(data, model, action, system):
+    if system.get("uptime", 0) > 99.9:
+        logger.info("System is reliable.")
+        return True
+    else:
+        logger.warning("System is not reliable.")
+        return False
+
+# Sample usage
 if __name__ == "__main__":
-    # Initialize the Algorethics class
     ai_lib = Algorethics()
 
-    # Add policies to the library
     ai_lib.add_privacy_policy(privacy_policy_example)
     ai_lib.add_transparency_policy(transparency_policy_example)
     ai_lib.add_inclusion_policy(inclusion_policy_example)
@@ -104,13 +124,11 @@ if __name__ == "__main__":
     ai_lib.add_impartiality_policy(impartiality_policy_example)
     ai_lib.add_reliability_policy(reliability_policy_example)
 
-    # Example data, model, action, and system for validation
-    data = [{"status": "included", "bias": 0}]
+    data = [{"status": "included", "bias": 0, "private": "Sensitive Data"}]
     model = {"explainability": True}
     action = {"responsible_party": "team_lead"}
     system = {"uptime": 99.95}
 
-    # Validate the AI project
     if ai_lib.validate(data, model, action, system):
         print("AI project is ethically compliant")
     else:
