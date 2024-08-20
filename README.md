@@ -3,8 +3,6 @@
   <img src="https://github.com/smartkuttan/Algorethics/blob/main/Algorethics.png" align="center" width="550">
 </div>
 
-Certainly! Here’s the expanded README file with detailed information on integrating ethical validation into AI projects, including code examples and real-world cases:
-
 ---
 
 # Algorethics AI Library
