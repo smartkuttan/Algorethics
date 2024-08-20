@@ -7,6 +7,11 @@
 
 # Algorethics AI Library
 
+<p align="center">
+  <img src="https://github.com/smartkuttan/Algorethics/blob/main/AlgorEthics-Certified.png" alt="Algorethics Certified" width="300" height="300"/>
+</p>
+
+
 ## Overview
 
 The Algorethics AI Library provides tools for ensuring ethical compliance in AI projects, inspired by the Rome Call for AI Ethics. This library helps developers verify that their AI models meet ethical standards, focusing on both text and image data.
@@ -36,6 +41,10 @@ The Rome Call for AI Ethics emphasizes respect for human dignity, transparency, 
 - **Content Appropriateness**: Flags images that may contain inappropriate or harmful content.
 
 ### 3. Certification API
+<p align="left">
+  <img src="https://github.com/smartkuttan/Algorethics/blob/main/AlgorEthics-Certified.png" alt="Algorethics Certified" width="300" height="300"/>
+</p>
+
 
 **Purpose**: To certify AI projects that meet ethical standards.
 
