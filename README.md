@@ -42,7 +42,7 @@ The Rome Call for AI Ethics emphasizes respect for human dignity, transparency, 
 
 ### 3. Certification API
 <p align="left">
-  <img src="https://github.com/smartkuttan/Algorethics/blob/main/AlgorEthics-Certified.png" alt="Algorethics Certified" width="300" height="300"/>
+  <img src="https://github.com/smartkuttan/Algorethics/blob/main/AlgorEthics-Certified-Purple.png" alt="Algorethics Certified" width="300" height="300"/>
 </p>
 
 
