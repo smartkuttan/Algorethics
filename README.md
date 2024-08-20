@@ -3,779 +3,377 @@
   <img src="https://github.com/smartkuttan/Algorethics/blob/main/Algorethics.png" align="center" width="550">
 </div>
 
-## Introduction
+Certainly! Here’s the expanded README file with detailed information on integrating ethical validation into AI projects, including code examples and real-world cases:
 
-The **Algorethics AI Library** is a Python library designed to help AI developers ensure their projects adhere to ethical principles. Inspired by the Universal Catholic Church's Rome Call for AI Ethics, this library promotes respect for human dignity, inclusion, transparency, responsibility, impartiality, and reliability in AI systems.
+---
 
-### Key Principles
+# Algorethics AI Library
 
-- **Respecting Human Dignity**: "So God created mankind in his own image, in the image of God he created them; male and female he created them." (Genesis 1:27)
-- **Promoting Inclusion**: "The body is a unit, though it is made up of many parts; and though all its parts are many, they form one body. So it is with Christ." (1 Corinthians 12:12)
-- **Ensuring Transparency**: "For nothing is hidden that will not become evident, nor anything secret that will not be known and come to light." (Luke 8:17)
-- **Upholding Responsibility**: "Everyone to whom much was given, of him much will be required; and from him to whom they entrusted much, they will demand the more." (Luke 12:48)
+## Overview
 
-## Key Features
+The Algorethics AI Library provides tools for ensuring ethical compliance in AI projects, inspired by the Rome Call for AI Ethics. This library helps developers verify that their AI models meet ethical standards, focusing on both text and image data.
 
-- **Privacy Policies**: Ensure the protection of sensitive information.
-- **Transparency Policies**: Guarantee that AI models are explainable and understandable.
-- **Inclusion Policies**: Promote inclusivity and prevent discrimination.
-- **Responsibility Policies**: Establish accountability for AI actions and decisions.
-- **Impartiality Policies**: Prevent bias in AI systems to safeguard fairness.
-- **Reliability Policies**: Ensure high reliability and uptime for AI systems.
+## Inspiration
+
+The Rome Call for AI Ethics emphasizes respect for human dignity, transparency, and fairness in AI development. This library integrates these principles into practical tools, ensuring that AI projects adhere to ethical guidelines.
+
+## Modules
+
+### 1. Ethical Validation for Text Data
+
+**Purpose**: To ensure text-based AI models adhere to ethical standards.
+
+**Features**:
+- **Bias Detection**: Identifies and mitigates biases in text data.
+- **Content Moderation**: Flags inappropriate or harmful content.
+- **Transparency Metrics**: Provides insights into the model’s decision-making process.
+
+### 2. Ethical Validation for Image Data
+
+**Purpose**: To ensure image-based AI models comply with ethical guidelines.
+
+**Features**:
+- **Image Bias Detection**: Analyzes images for bias or discrimination.
+- **Privacy Protection**: Ensures respect for individuals' privacy in image data.
+- **Content Appropriateness**: Flags images that may contain inappropriate or harmful content.
+
+### 3. Certification API
+
+**Purpose**: To certify AI projects that meet ethical standards.
+
+**Features**:
+- **Certification Issuance**: Provides a certification logo for compliant projects.
+- **Compliance Reporting**: Generates detailed reports on compliance status.
+- **Verification Process**: Allows for ongoing updates and re-evaluations of compliance.
 
 ## Installation
 
-To install the Algorethics AI Library, use pip:
+To install the Algorethics AI Library, use the following command:
 
 ```bash
-pip install algorethics
+pip install algorethics-ai-library
 ```
 
-## Usage
+## Configuration
 
-Here's an example of how to use the Algorethics AI Library in your project.
+Create a configuration file `config.json` to customize the settings for validation and certification. Example:
 
-### Step 1: Define Ethical Policies
-
-Define functions that represent your ethical policies. These functions should return a boolean indicating whether the policy is satisfied.
-
-#### Privacy Policy Example
-
-```python
-def privacy_policy_example(data):
-    """Ensure that sensitive information is not included in the data."""
-    # Example: Filter out any entries with keys like "private", "confidential", "secret"
-    return not any(key in data for key in ["private", "confidential", "secret"])
-
-# Real-world sample usage
-data_sample = {"name": "John Doe", "private": "Sensitive Data"}
-print(privacy_policy_example(data_sample))  # Output: False
-```
-
-#### Transparency Policy Example
-
-```python
-def transparency_policy_example(model):
-    """Ensure that the AI model is explainable."""
-    # Example: Check if the model has an attribute for explainability
-    return hasattr(model, 'explainability')
-
-# Real-world sample usage
-class AIModel:
-    explainability = True
-
-model_sample = AIModel()
-print(transparency_policy_example(model_sample))  # Output: True
-```
-
-#### Inclusion Policy Example
-
-```python
-def inclusion_policy_example(data):
-    """Ensure that no individual is excluded based on discriminatory attributes."""
-    # Example: Ensure no one has the "excluded" status
-    return all(item.get("status") != "excluded" for item in data)
-
-# Real-world sample usage
-data_sample = [{"status": "included"}, {"status": "excluded"}]
-print(inclusion_policy_example(data_sample))  # Output: False
-```
-
-#### Responsibility Policy Example
-
-```python
-def responsibility_policy_example(action):
-    """Ensure that there is accountability for actions taken by the AI."""
-    # Example: Check if there is a responsible party for the action
-    return action.get("responsible_party") is not None
-
-# Real-world sample usage
-action_sample = {"action": "delete_user", "responsible_party": "admin"}
-print(responsibility_policy_example(action_sample))  # Output: True
-```
-
-#### Impartiality Policy Example
-
-```python
-def impartiality_policy_example(data):
-    """Ensure that the AI system does not create or follow biases."""
-    # Example: Check if there is any bias value in the data
-    return all(item.get("bias") == 0 for item in data)
-
-# Real-world sample usage
-data_sample = [{"bias": 0}, {"bias": 1}]
-print(impartiality_policy_example(data_sample))  # Output: False
-```
-
-#### Reliability Policy Example
-
-```python
-def reliability_policy_example(system):
-    """Ensure that the AI system maintains high reliability."""
-    # Example: Check if the system uptime is greater than 99.9%
-    return system.get("uptime", 0) > 99.9
-
-# Real-world sample usage
-system_sample = {"uptime": 99.95}
-print(reliability_policy_example(system_sample))  # Output: True
-```
-
-### Step 2: Initialize Algorethics and Add Policies
-
-Create an instance of the Algorethics class and add the defined policies.
-
-```python
-from algorethics import Algorethics
-
-# Initialize the Algorethics class
-ai_lib = Algorethics()
-
-# Add policies to the library
-ai_lib.add_privacy_policy(privacy_policy_example)
-ai_lib.add_transparency_policy(transparency_policy_example)
-ai_lib.add_inclusion_policy(inclusion_policy_example)
-ai_lib.add_responsibility_policy(responsibility_policy_example)
-ai_lib.add_impartiality_policy(impartiality_policy_example)
-ai_lib.add_reliability_policy(reliability_policy_example)
-```
-
-### Step 3: Validate AI Project
-
-Use the `validate` method to check if your AI project adheres to the defined ethical policies.
-
-```python
-# Example data, model, action, and system for validation
-data = [{"status": "included", "bias": 0}]
-model = {"explainability": True}
-action = {"responsible_party": "team_lead"}
-system = {"uptime": 99.95}
-
-# Validate the AI project
-if ai_lib.validate(data, model, action, system):
-    print("AI project is ethically compliant")
-else:
-    print("AI project is not ethically compliant")
-```
-
-## Full Example
-
-Combining all steps into a complete example:
-
-```python
-from algorethics import Algorethics
-
-# Define ethical policies
-def privacy_policy_example(data):
-    """Ensure that sensitive information is not included in the data."""
-    return not any(key in data for key in ["private", "confidential", "secret"])
-
-def transparency_policy_example(model):
-    """Ensure that the AI model is explainable."""
-    return hasattr(model, 'explainability')
-
-def inclusion_policy_example(data):
-    """Ensure that no individual is excluded based on discriminatory attributes."""
-    return all(item.get("status") != "excluded" for item in data)
-
-def responsibility_policy_example(action):
-    """Ensure that there is accountability for actions taken by the AI."""
-    return action.get("responsible_party") is not None
-
-def impartiality_policy_example(data):
-    """Ensure that the AI system does not create or follow biases."""
-    return all(item.get("bias") == 0 for item in data)
-
-def reliability_policy_example(system):
-    """Ensure that the AI system maintains high reliability."""
-    return system.get("uptime", 0) > 99.9
-
-# Initialize Algorethics
-ai_lib = Algorethics()
-
-# Add policies
-ai_lib.add_privacy_policy(privacy_policy_example)
-ai_lib.add_transparency_policy(transparency_policy_example)
-ai_lib.add_inclusion_policy(inclusion_policy_example)
-ai_lib.add_responsibility_policy(responsibility_policy_example)
-ai_lib.add_impartiality_policy(impartiality_policy_example)
-ai_lib.add_reliability_policy(reliability_policy_example)
-
-# Example data, model, action, and system
-data = [{"status": "included", "bias": 0}]
-model = {"explainability": True}
-action = {"responsible_party": "team_lead"}
-system = {"uptime": 99.95}
-
-# Validate AI project
-if ai_lib.validate(data, model, action, system):
-    print("AI project is ethically compliant")
-else:
-    print("AI project is not ethically compliant")
-```
-
-## Detailed Policy implementation Example 
-
-Here is a detailed implementation of all six policies, including privacy, transparency, inclusion, responsibility, impartiality, and reliability, along with real-world examples.
-
-### Privacy Policy Implementation
-
-```python
-import logging
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-def privacy_policy_example(data):
-    """
-    Ensure that sensitive information is not included in the data.
-    
-    Parameters:
-    data (dict): The data to be checked for sensitive information.
-    
-    Returns:
-    bool: True if no sensitive information is found, False otherwise.
-    """
-    sensitive_keywords = ["private", "confidential", "secret", "ssn", "password", "credit_card"]
-    
-    for key in sensitive_keywords:
-        if key in data:
-            logger.warning(f"Sensitive information detected: {key}")
-            return False
-    
-    for key, value in data.items():
-        if isinstance(value, dict):
-            if not privacy_policy_example(value):
-                logger.warning(f"Sensitive information detected in nested data: {key}")
-                return False
-    
-    for key, value in data.items():
-        if isinstance(value, list):
-            for item in value:
-                if isinstance(item, dict):
-                    if not privacy_policy_example(item):
-                        logger.warning(f"Sensitive information detected in list data: {key}")
-                        return False
-    
-    logger.info("No sensitive information detected.")
-    return True
-
-# Real-world sample usage
-data_sample = {
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "private": "Sensitive Data",
-    "address": {
-        "street": "123 Main St",
-        "city": "Anytown",
-        "confidential": "Hidden Info"
+```json
+{
+    "text_validator": {
+        "bias_detection": true,
+        "content_moderation": true,
+        "transparency_metrics": true
     },
-    "transactions": [
-        {"amount": 100, "credit_card": "1234-5678-9012-3456"},
-        {"amount": 200, "ssn": "123-45-6789"}
-    ]
+    "image_validator": {
+        "image_bias_detection": true,
+        "privacy_protection": true,
+        "content_appropriateness": true
+    }
 }
-
-print(privacy_policy_example(data_sample))  # Output: False (due to multiple violations)
 ```
 
-### Transparency Policy Implementation
+## Usage Instructions
+
+### Text Validation Module
+
+#### Importing the Module
 
 ```python
-def transparency_policy_example(model):
-    """
-    Ensure that the AI model is explainable.
-    
-    Parameters:
-    model (object): The AI model to be checked for explainability.
-    
-    Returns:
-    bool: True if the model is explainable, False otherwise.
-    """
-    if hasattr(model, 'explainability'):
-        logger.info("Model is explainable.")
-        return True
-    else:
-        logger.warning("Model is not explainable.")
-        return False
-
-# Real-world sample usage
-class AIModel:
-    explainability = True
-
-model_sample = AIModel()
-print(transparency_policy_example(model_sample))  # Output: True
+from algorethics_ai_library.text_validator import TextValidator
 ```
 
-### Inclusion Policy Implementation
+#### Initializing the Validator
 
 ```python
-def inclusion_policy_example(data):
-    """
-    Ensure that no individual is excluded based on discriminatory attributes.
-    
-    Parameters:
-    data (list): The data to be checked for inclusivity.
-    
-    Returns:
-    bool: True if no individual is excluded, False otherwise.
-    """
-    for item in data:
-        if item.get("status") == "excluded":
-            logger.warning(f"Discriminatory exclusion detected: {item}")
-            return False
-    
-    logger.info("No discriminatory exclusions detected.")
-    return True
-
-# Real-world sample usage
-data_sample = [{"status": "included"}, {"status": "excluded"}]
-print(inclusion_policy_example(data_sample))  # Output: False
+text_validator = TextValidator(config_path='path_to_config_file')
 ```
 
-### Responsibility Policy Implementation
+#### Validating Text Data
 
 ```python
-def responsibility_policy_example(action):
-    """
-    Ensure that there is accountability for actions taken by the AI.
-    
-    Parameters:
-    action (dict): The action to be checked for accountability.
-    
-    Returns:
-    bool: True if there is accountability, False otherwise.
-    """
-    if action.get("responsible_party") is not None:
-        logger.info("Action is accountable.")
-        return True
-    else:
-        logger.warning("Action is not accountable.")
-        return False
+text_data = "Sample text for validation"
+results = text_validator.validate(text_data)
 
-# Real-world sample usage
-action_sample = {"action": "delete_user", "responsible_party": "admin"}
-print(responsibility_policy_example(action_sample))  # Output: True
+print("Validation Results:")
+print("Bias Report:", results['bias_report'])
+print("Content Moderation Flags:", results['content_flags'])
+print("Transparency Metrics:", results['transparency_metrics'])
 ```
 
-### Impartiality Policy Implementation
+**Possible Results**:
+- `bias_report`: Details on identified biases in the text.
+- `content_flags`: Flags for inappropriate or harmful content.
+- `transparency_metrics`: Insights into how the model makes decisions.
+
+### Image Validation Module
+
+#### Importing the Module
 
 ```python
-def impartiality_policy_example(data):
-    """
-    Ensure that the AI system does not create or follow biases.
-    
-    Parameters:
-    data (list): The data to be checked for biases.
-    
-    Returns:
-    bool: True if no biases are found, False otherwise.
-    """
-    for item in data:
-        if item.get("bias") != 0:
-            logger.warning(f"Bias detected: {item}")
-            return False
-    
-    logger.info("No biases detected.")
-    return True
-
-# Real-world sample usage
-data_sample = [{"bias": 0}, {"bias": 1}]
-print(impartiality_policy_example(data_sample))  # Output: False
+from algorethics_ai_library.image_validator import ImageValidator
 ```
 
-### Reliability Policy Implementation
+#### Initializing the Validator
 
 ```python
-def reliability_policy_example(system):
-    """
-    Ensure that the AI system maintains high reliability.
-    
-    Parameters:
-    system (dict): The system to be checked for reliability.
-    
-    Returns:
-    bool: True if the system is reliable, False otherwise.
-    """
-    if system.get("uptime", 0) > 99.9:
-        logger.info("System is reliable.")
-        return True
-    else:
-        logger.warning("System is not reliable.")
-        return False
-
-# Real-world sample usage
-system_sample = {"uptime": 99.95}
-print(reliability_policy_example(system_sample))  # Output: True
+image_validator = ImageValidator(config_path='path_to_config_file')
 ```
 
-### Full Example
-
-Combining all steps into a complete example:
+#### Validating Image Data
 
 ```python
-from algorethics import Algorethics
+from PIL import Image
 
-# Define ethical policies
-def privacy_policy_example(data):
-    sensitive_keywords = ["private", "confidential", "secret", "ssn", "password", "credit_card"]
-    
-    for key in sensitive_keywords:
-        if key in data:
-            logger.warning(f"Sensitive information detected: {key}")
-            return False
-    
-    for key, value in data.items():
-        if isinstance(value, dict):
-            if not privacy_policy_example(value):
-                logger.warning(f"Sensitive information detected in nested data: {key}")
-                return False
-    
-    for key, value in data.items():
-        if isinstance(value, list):
-            for item in value:
-                if isinstance(item, dict):
-                    if not privacy_policy_example(item):
-                        logger.warning(f"Sensitive information detected in list data: {key}")
-                        return False
-    
-    logger.info("No sensitive information detected.")
-    return True
+image = Image.open('path_to_image_file')
+results = image_validator.validate(image)
 
-def transparency_policy_example(model):
-    if hasattr(model, 'explainability'):
-        logger.info("Model is explainable.")
-        return True
-    else:
-        logger.warning("Model is not explainable.")
-        return False
-
-def inclusion_policy_example(data):
-    for item in data:
-        if item.get("status") == "excluded":
-            logger.warning(f"Discriminatory exclusion detected: {item}")
-            return False
-    
-    logger.info("No discriminatory exclusions detected.")
-    return True
-
-def responsibility_policy_example(action):
-    if action.get("responsible_party") is not None:
-        logger.info("Action is accountable.")
-        return True
-    else:
-        logger.warning("Action is not accountable.")
-        return False
-
-def impartiality_policy_example(data):
-    for item in data:
-        if item.get("bias") != 0:
-            logger.warning(f"Bias detected: {item}")
-            return False
-    
-    logger.info("No biases detected.")
-    return True
-
-def reliability_policy_example(system):
-    if system.get("uptime", 0) > 99.9:
-        logger.info("System is reliable.")
-        return True
-    else:
-        logger.warning("System is not reliable.")
-        return False
-
-# Initialize Algorethics
-ai_lib = Algorethics()
-
-# Add policies
-ai_lib.add_privacy_policy(privacy_policy_example)
-ai_lib.add_transparency_policy(transparency_policy_example)
-ai_lib.add_inclusion_policy(inclusion_policy_example)
-ai_lib.add_responsibility_policy(responsibility_policy_example)
-ai_lib.add_impartiality_policy(impartiality_policy_example)
-ai_lib.add_reliability_policy(reliability_policy_example)
-
-# Example data, model, action, and system
-data = [{"status": "included", "bias": 0}]
-model = {"explainability": True}
-action = {"responsible_party": "team_lead"}
-system = {"uptime": 99.95}
-
-# Validate AI project
-if ai_lib.validate(data, model, action, system):
-    print("AI project is ethically compliant")
-else:
-    print("AI project is not ethically compliant")
+print("Validation Results:")
+print("Bias Detection:", results['bias_detection'])
+print("Privacy Protection:", results['privacy_protection'])
+print("Content Appropriateness:", results['content_appropriateness'])
 ```
 
-This implementation ensures thorough checking for each ethical principle and provides clear logging to identify any violations.
+**Possible Results**:
+- `bias_detection`: Analysis of any bias in the image data.
+- `privacy_protection`: Checks for privacy issues.
+- `content_appropriateness`: Flags for inappropriate content in the images.
 
+### Certification API
 
-### `Algorethics.py`
+#### Importing the Module
 
 ```python
-import logging
+from algorethics_ai_library.certification_api import CertificationAPI
+```
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+#### Initializing the API
 
-class Algorethics:
-    def __init__(self):
-        self.privacy_policies = []
-        self.transparency_policies = []
-        self.inclusion_policies = []
-        self.responsibility_policies = []
-        self.impartiality_policies = []
-        self.reliability_policies = []
+```python
+cert_api = CertificationAPI(api_key='your_api_key')
+```
 
-    def add_privacy_policy(self, policy_func):
-        self.privacy_policies.append(policy_func)
+#### Submitting for Certification
 
-    def add_transparency_policy(self, policy_func):
-        self.transparency_policies.append(policy_func)
+```python
+response = cert_api.submit_for_certification(project_id='your_project_id')
+print("Certification Response:", response)
+```
 
-    def add_inclusion_policy(self, policy_func):
-        self.inclusion_policies.append(policy_func)
+#### Reviewing Certification Report
 
-    def add_responsibility_policy(self, policy_func):
-        self.responsibility_policies.append(policy_func)
+```python
+report = cert_api.get_compliance_report(project_id='your_project_id')
+print("Compliance Report:", report)
+```
 
-    def add_impartiality_policy(self, policy_func):
-        self.impartiality_policies.append(policy_func)
+**Compliance Report Includes**:
+- Details on compliance status.
+- Recommendations for adjustments if needed.
 
-    def add_reliability_policy(self, policy_func):
-        self.reliability_policies.append(policy_func)
+### Obtaining and Displaying Certification
 
-    def validate(self, data, model, action, system):
-        all_policies = {
-            'Privacy': self.privacy_policies,
-            'Transparency': self.transparency_policies,
-            'Inclusion': self.inclusion_policies,
-            'Responsibility': self.responsibility_policies,
-            'Impartiality': self.impartiality_policies,
-            'Reliability': self.reliability_policies
-        }
+To obtain the Algorethics compliance certification and display the logo on your project, follow these steps:
 
-        for policy_type, policies in all_policies.items():
-            for policy in policies:
-                if not policy(data, model, action, system):
-                    logger.warning(f"{policy_type} policy validation failed.")
-                    return False
+1. **Check Project Compliance**:
+   Ensure your project meets ethical standards using the Algorethics library.
 
-        logger.info("All policies validated successfully.")
-        return True
+2. **Prompt User for Confirmation**:
+   If your project is deemed ethical, prompt the user to confirm if they wish to display the certification logo.
 
-def privacy_policy_example(data, model, action, system):
-    sensitive_keywords = ["private", "confidential", "secret", "ssn", "password", "credit_card"]
+3. **Collect Project Details**:
+   If the user agrees, collect the following details:
+   - Project Name
+   - Project URL
+   - Developer Contact Email
 
-    def check_sensitive_info(data):
-        if isinstance(data, dict):
-            for key, value in data.items():
-                if key.lower() in sensitive_keywords:
-                    logger.warning(f"Sensitive information detected: {key}")
-                    return False
-                if isinstance(value, (dict, list)):
-                    if not check_sensitive_info(value):
-                        return False
-        elif isinstance(data, list):
-            for item in data:
-                if not check_sensitive_info(item):
-                    return False
-        return True
+4. **Make API Call to PHP Web Service**:
+   Send the collected details to the PHP web service to register the project and obtain the certification logo and HTML embed code.
 
-    return check_sensitive_info(data)
+5. **Display HTML Code**:
+   Provide the user with the HTML code needed to embed the certification logo on their project.
 
-def transparency_policy_example(data, model, action, system):
-    if hasattr(model, 'explainability'):
-        logger.info("Model is explainable.")
-        return True
-    else:
-        logger.warning("Model is not explainable.")
-        return False
+#### Sample Python Code
 
-def inclusion_policy_example(data, model, action, system):
-    for item in data:
-        if item.get("status") == "excluded":
-            logger.warning(f"Discriminatory exclusion detected: {item}")
-            return False
-    logger.info("No discriminatory exclusions detected.")
+```python
+import requests
+
+def check_project_compliance():
+    # Placeholder function to determine if the project is ethical
+    # Replace this with the actual compliance checking logic
     return True
 
-def responsibility_policy_example(data, model, action, system):
-    if action.get("responsible_party") is not None:
-        logger.info("Action is accountable.")
-        return True
+def get_user_input(prompt):
+    return input(prompt).strip()
+
+def main():
+    # Check if the project is ethical
+    is_ethical = check_project_compliance()
+    
+    if is_ethical:
+        print("Your project is found to be ethical.")
+        display_logo = get_user_input("Do you want to display that your project is Algorethics compliant and certified? (Type Yes to proceed): ")
+        
+        if display_logo.lower() == 'yes':
+            # Collect project details from the user
+            project_name = get_user_input("Enter your AI Project Name: ")
+            project_url = get_user_input("Enter your AI Project URL: ")
+            developer_email = get_user_input("Enter the Developer Contact Email: ")
+            
+            # API endpoint
+            url = "https://algorethics.info/algorethics_cert_gen.php"
+            
+            # Data to be sent in the POST request
+            data = {
+                'project_name': project_name,
+                'project_url': project_url,
+                'developer_email': developer_email
+            }
+            
+            # Make the API call
+            response = requests.post(url, data=data)
+            
+            # Handle the response
+            if response.status_code == 200:
+                result = response.json()
+                if result['status'] == 'success':
+                    print("Project registered successfully.")
+                    print("Project ID:", result['project_id'])
+                    print("Logo URL:", result['logo_url'])
+                    print("HTML Code to embed logo:", result['html_code'])
+                else:
+                    print("Error:", result['message'])
+            else:
+                print("Failed to connect to the web service.")
+        else:
+            print("Logo display declined by user.")
     else:
-        logger.warning("Action is not accountable.")
-        return False
+        print("Project is not ethical.")
 
-def impartiality_policy_example(data, model, action, system):
-    for item in data:
-        if item.get("bias") != 0:
-            logger.warning(f"Bias detected: {item}")
-            return False
-    logger.info("No biases detected.")
-    return True
-
-def reliability_policy_example(data, model, action, system):
-    if system.get("uptime", 0) > 99.9:
-        logger.info("System is reliable.")
-        return True
-    else:
-        logger.warning("System is not reliable.")
-        return False
-
-# Sample usage
 if __name__ == "__main__":
-    ai_lib = Algorethics()
-
-    ai_lib.add_privacy_policy(privacy_policy_example)
-    ai_lib.add_transparency_policy(transparency_policy_example)
-    ai_lib.add_inclusion_policy(inclusion_policy_example)
-    ai_lib.add_responsibility_policy(responsibility_policy_example)
-    ai_lib.add_impartiality_policy(impartiality_policy_example)
-    ai_lib.add_reliability_policy(reliability_policy_example)
-
-    data = [{"status": "included", "bias": 0, "private": "Sensitive Data"}]
-    model = {"explainability": True}
-    action = {"responsible_party": "team_lead"}
-    system = {"uptime": 99.95}
-
-    if ai_lib.validate(data, model, action, system):
-        print("AI project is ethically compliant")
-    else:
-        print("AI project is not ethically compliant")
+    main()
 ```
 
-### Sample Template Framework for Developers
+**Explanation**:
+- **Compliance Check**: The `check_project_compliance` function is a placeholder. Replace it with actual logic to verify if the project meets ethical standards.
+- **User Confirmation**: The script prompts the user to confirm if they want to display the certification logo.
+- **Collecting Details**: Collects necessary project details if the user agrees.
+- **Making the API Call**: Sends a POST request to the PHP web service with the project details.
+- **Handling the Response**: Displays relevant information or error messages based on the API response.
 
-Below is a comprehensive sample template framework for developers to use the `Algorethics` library in their AI projects.
+**Note**: Ensure you have the `requests` library installed in your Python environment:
+
+```bash
+pip install requests
+```
+
+## Integrate Ethical Validation
+
+Integrating ethical validation into your AI projects involves incorporating both text and image ethical validation modules. Here’s how you can do it:
+
+### Integrating Text Ethical Validation
+
+**Use Case**: An AI chatbot that provides customer support.
+
+**Integration Steps**:
+
+1. **Validate User Input**:
+   Use the text validation module to check for biases and inappropriate content in user queries.
+
+2. **Modify Responses**:
+   Based on the validation results, adjust or flag responses that may be biased or inappropriate.
+
+**Example Code**:
 
 ```python
-# Import necessary libraries
-from algorethics import Algorethics
+from algorethics_ai_library.text_validator import TextValidator
 
-# Define custom policy functions if needed
-def custom_privacy_policy(data, model, action, system):
-    sensitive_keywords = ["private", "confidential", "secret", "ssn", "password", "credit_card"]
-    
-    def check_sensitive_info(data):
-        if isinstance(data, dict):
-            for key, value in data.items():
-                if key.lower() in sensitive_keywords:
-                    return False
-                if isinstance(value, (dict, list)):
-                    if not check_sensitive_info(value):
-                        return False
-        elif isinstance(data, list):
-            for item in data:
-                if not check_sensitive_info(item):
-                    return False
-        return True
+def validate_and_respond(user_input):
+    text_validator = TextValidator(config_path='path_to_config_file')
+    results = text_validator.validate(user_input)
 
-    return check_sensitive_info(data)
-
-def custom_transparency_policy(data, model, action, system):
-    if hasattr(model, 'explainability'):
-        return True
+    if results['bias_report'] or results['content_flags']:
+        response = "Sorry, I cannot process this request."
     else:
-        return False
+        response = "Your request has been processed successfully."
 
-def custom_inclusion_policy(data, model, action, system):
-    for item in data:
-        if item.get("status") == "excluded":
-            return False
-    return True
+    return response
 
-def custom_responsibility_policy(data, model, action, system):
-    if action.get("responsible_party") is not None:
-        return True
-    else:
-        return False
-
-def custom_impartiality_policy(data, model, action, system):
-    for item in data:
-        if item.get("bias") != 0:
-            return False
-    return True
-
-def custom_reliability_policy(data, model, action, system):
-    if system.get("uptime", 0) > 99.9:
-        return True
-    else:
-        return False
-
-# Initialize Algorethics
-ai_lib = Algorethics()
-
-# Add predefined or custom policies
-ai_lib.add_privacy_policy(custom_privacy_policy)
-ai_lib.add_transparency_policy(custom_transparency_policy)
-ai_lib.add_inclusion_policy(custom_inclusion_policy)
-ai_lib.add_responsibility_policy(custom_responsibility_policy)
-ai_lib.add_impartiality_policy(custom_impartiality_policy)
-ai_lib.add_reliability_policy(custom_reliability_policy)
-
-# Define example data, model, action, and system
-data = [{"status": "included", "bias": 0, "private": "Sensitive Data"}]
-model = {"explainability": True}
-action = {"responsible_party": "admin"}
-system = {"uptime": 99.8}
-
-# Validate AI project
-if ai_lib.validate(data, model, action, system):
-    print("AI project is ethically compliant")
-else:
-    print("AI project is not ethically compliant")
-
-# Implement further project logic
-# ...
+user_input = "Sample user input"
+response = validate_and_respond(user_input)
+print(response)
 ```
 
-### Detailed Explanation
+### Integrating Image Ethical Validation
 
-1. **Privacy Policy**:
-   - Checks for sensitive keywords in the data to ensure no private information is included.
-   - Handles nested data structures (dictionaries within dictionaries or lists).
+**Use Case**: An AI-powered content moderation tool for social media.
 
-2. **Transparency Policy**:
-   - Verifies if the model has an 'explainability' attribute to ensure it can be explained.
+**Integration Steps**:
 
-3. **Inclusion Policy**:
-   - Ensures that no individual is excluded based on discriminatory attributes.
+1. **Validate Uploaded Images**:
+   Use the image validation module to check for biases, privacy issues, and inappropriate content in user-uploaded images.
 
-4. **Responsibility Policy**:
-   - Checks if there is a responsible party for the AI's actions, ensuring accountability.
+2. **Moderate Content**:
+   Based on the validation results, take actions such as flagging or removing problematic content.
 
-5. **Impartiality Policy**:
-   - Verifies that the AI system does not create or follow biases.
+**Example Code**:
 
-6. **Reliability Policy**:
-   - Ensures the system's uptime is above 99.9%, indicating high reliability.
+```python
+from algorethics_ai_library.image_validator import ImageValidator
+from PIL import Image
 
-### Sample Template Framework
+def validate_image(image_path):
+    image_validator = ImageValidator(config_path='
 
-- **Custom Policy Functions**:
-  - Developers can define custom policy functions tailored to their specific needs.
+path_to_config_file')
+    image = Image.open(image_path)
+    results = image_validator.validate(image)
 
-- **Initialization and Adding Policies**:
-  - Initialize the `Algorethics` class and add predefined or custom policies.
+    if results['bias_detection'] or results['privacy_protection'] or results['content_appropriateness']:
+        return "Image flagged for review."
+    else:
+        return "Image approved."
 
-- **Example Data, Model, Action, and System**:
-  - Define example inputs to validate the AI project against the policies.
+image_path = 'path_to_image_file'
+status = validate_image(image_path)
+print(status)
+```
 
-- **Validation**:
-  - Use the `validate` method to check if the AI project adheres to the defined policies.
+## Real-World Cases
 
-This enhanced implementation ensures a comprehensive framework for developers to integrate and validate ethical policies in their AI projects, promoting responsible and fair AI systems.
+### 1. AI Chatbot for Customer Support
+
+**Scenario**: A company uses an AI chatbot to handle customer inquiries.
+
+**Integration**: The chatbot integrates the Algorethics text validation module to ensure that all responses are unbiased and appropriate. This helps in maintaining a professional and respectful interaction with users.
+
+**Outcome**: The company successfully reduces instances of biased or inappropriate responses, improving customer satisfaction and trust.
+
+### 2. Social Media Content Moderation Tool
+
+**Scenario**: A social media platform uses an AI tool to moderate user-generated content.
+
+**Integration**: The platform integrates the Algorethics image validation module to automatically check images for privacy issues and inappropriate content. This helps in maintaining a safe environment for users.
+
+**Outcome**: The platform effectively filters out harmful content and respects users' privacy, enhancing the overall user experience.
+
+## Developer Possibilities
+
+- **Integrate Ethical Validation**: Incorporate text and image ethical validation into your AI projects to ensure compliance with ethical standards.
+- **Custom Certification**: Tailor the certification process to your specific project needs, ensuring that your AI models meet required ethical guidelines.
+- **Ongoing Compliance**: Regularly update your project and reapply for certification to maintain adherence to ethical standards.
+
 ## Contributing
 
-We welcome contributions from the community to enhance the functionality and reach of Algorethics. Please feel free to fork this repository, submit pull requests, and raise issues.
+We welcome contributions to the Algorethics AI Library. Please follow the standard GitHub fork-and-pull request workflow. For detailed contribution guidelines, refer to the `CONTRIBUTING.md` file in this repository.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+Feel free to adjust the examples and details as needed for your specific applications and scenarios.
 
 ## This Project is inspired by Rome Call
 <!-- Footer -->
