@@ -209,6 +209,10 @@ The Rome Call for AI Ethics is a significant initiative led by the Vatican and v
 
 For more information about the Rome Call, visit [Rome Call for AI Ethics](https://www.romecall.org).
 
+### Future Directions
+
+To see the future directions of this open-source ethical library, please visit [Algorethics Website](https://algorethics.info).
+
 ### Contact Stephen Antony Venansious
 
 **Address:**
@@ -223,10 +227,8 @@ India
 
 ### Resources
 
-- **Twitter**: Follow the Rome Call on Twitter https://twitter.com/call_rome
-- **YouTube**: Watch related videos on YouTube https://www.youtube.com/channel/UCcoTSMAX1vLc47z5z7yPO6g
+- **Twitter**: Follow the Rome Call on Twitter
+- **YouTube**: Watch related videos on YouTube
 - **Download Rome Call Document**: [Download the Rome Call Paper](https://www.romecall.org/document.pdf)
 
 By adhering to the ethical guidelines set forth in the Rome Call for AI Ethics, the Algorethics AI Library aims to foster a future where AI serves humanity responsibly and respectfully. Join us in this mission to build a more ethical AI landscape.
-```
-
