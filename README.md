@@ -1,5 +1,5 @@
-
 # Algorethics AI Library Documentation
+
 <div align="center">
   <img src="https://github.com/smartkuttan/Algorethics/blob/main/Algorethics.png" align="center" width="550">
 </div>
@@ -12,17 +12,27 @@
   <img src="https://github.com/smartkuttan/Algorethics/blob/main/AlgorEthics-Certified.png" alt="Algorethics Certified" width="300" height="300"/>
 </p>
 
----
+
 
 ## **Overview**
-The Algorethics AI Library is an open-source Python framework designed to ensure that AI-driven solutions adhere to ethical standards. The library provides tools for developers to validate AI models and datasets, ensuring they are fair, inclusive, transparent, and privacy-respecting. This project is inspired by the principles of the Universal Catholic Church's Rome Call for AI Ethics.
+
+The **Algorethics AI Library** is an open-source Python framework that ensures AI-driven solutions adhere to ethical standards. This project is inspired by the **Rome Call for AI Ethics**, focusing on human-centered AI, inclusivity, and transparency.
+
+### Developer Information:
+- **Project Developer**: Stephen Antony Venansious (Steve)
+- **Address**: MRWRA 43, Mary Major Mundakkal West, Kollam O1, Kerala 691001, India
+- **Phone**: +91 4897 4612
+- **Contact**: [Contact Us](https://algorethics.info/contact.php)
+- **Project Website**: [Algorethics Website](https://algorethics.info)
 
 ## **Features**
-- **Ethical Policies**: Implement ethical checks for inclusivity, fairness, privacy, responsibility, and transparency.
-- **Data Validation**: Validate text and image data to ensure ethical integrity.
-- **Command-Line Interface**: Easily interact with the library using the CLI to perform validations.
-- **Extensibility**: Add custom policies to meet specific ethical requirements.
-- **Logging**: Keep track of operations and validations for auditing and debugging purposes.
+
+- **Ethical Policies**: Implements ethical checks for **inclusivity**, **fairness**, **privacy**, **responsibility**, and **transparency**.
+- **Advanced Data Validation**: Supports **text** and **image** data validation, with upcoming enhancements for **bias detection** and **real-time monitoring**.
+- **Certification API**: Provides certification for AI projects that meet ethical standards.
+- **Integration**: Seamlessly integrates with **TensorFlow**, **PyTorch**, and **Scikit-Learn** to ensure ethical compliance in AI models.
+- **Command-Line Interface**: Easily interact with the library via CLI to perform validations.
+- **Logging**: Keeps a detailed log of all validations for auditing and debugging.
 
 ## **Installation**
 
@@ -39,14 +49,14 @@ pip install -r requirements.txt
 
 ## **Usage**
 
-### **1. Command-Line Interface**
+### **1. Command-Line Interface (CLI) Usage**
 
-To validate a text file:
+#### To Validate a Text File:
 ```bash
 python -m algorethics.interfaces.command_interface --validate-text --input data/sample_text_data.csv
 ```
 
-To validate an image file:
+#### To Validate an Image File:
 ```bash
 python -m algorethics.interfaces.command_interface --validate-image --input data/sample_image_data.png
 ```
@@ -56,131 +66,172 @@ python -m algorethics.interfaces.command_interface --validate-image --input data
 from algorethics.core.validator import Validator
 from algorethics.policies.inclusion_policy import InclusionPolicy
 
+# Initialize validator with policies
 validator = Validator(policies=[InclusionPolicy()])
+
+# Validate a sample text
 result = validator.validate_text("This is a sample text to validate.")
 print(result)
 ```
 
-### **3. Example Usage**
-In the `examples/` directory, you'll find example scripts that demonstrate how to use the library's various features. These scripts can be run directly and modified to fit your needs.
+## **Certification API Integration**
 
-## **Modules**
+The **Certification API** is called only when the project passes all ethical validations:
+
+- **Human Dignity**
+- **Inclusion**
+- **Transparency**
+- **Accountability**
+- **Privacy**
+- **Beneficence**
+
+Here’s an example of using the Certification API:
+
+```python
+import requests
+from policy_validation import EthicsPolicyValidator
+
+# Initialize the Ethics Validator
+validator = EthicsPolicyValidator()
+
+# Validate the project
+is_compliant = validator.validate_all("content", "data", "model_output", "process_log", "impact_assessment")
+
+if is_compliant:
+    print("Project is compliant. Proceeding with certification.")
+    response = requests.post('https://algorethics.info/algorethics_cert_gen.php', data={
+        'project_name': 'Your Project',
+        'project_url': 'http://yourproject.com',
+        'developer_email': 'developer@yourproject.com'
+    })
+    print(response.json())
+else:
+    print("Project is not ethically compliant.")
+```
+
+## **Modules and Structure**
 
 ### **Core Module**
-- **ethical_policy.py**: Base classes for ethical policies.
+- **policy_validation.py**: Handles validation based on the six ethical principles.
+- **ethical_policy.py**: Base classes for creating ethical policies.
 - **validator.py**: Main validation logic.
-
-### **Data Module**
-- **image.py**: Image data validation.
-- **text.py**: Text data validation.
-
-### **Interfaces Module**
-- **command_interface.py**: Command-line interface for running validations.
 
 ### **Policies Module**
 - **inclusion_policy.py**: Ensures inclusivity in AI models.
 - **privacy_policy.py**: Enforces privacy standards.
-- **transparency_policy.py**: Promotes transparency in AI models.
+- **transparency_policy.py**: Promotes transparency and fairness.
 
-### **Utilities Module**
-- **logger.py**: Logging operations and validations.
+### **Data Module**
+- **image.py**: Validates images for ethical issues.
+- **text.py**: Validates text for inclusivity, fairness, and more.
 
-## **Examples**
-Explore the `examples/` directory for scripts that demonstrate different use cases of the Algorethics library, including text and image validation. These examples will help you get started quickly.
+### **Interfaces Module**
+- **command_interface.py**: Command-line interface for running validations.
 
-## **Future Possibilities**
-We are working on exciting future enhancements for Algorethics to ensure all AI projects are ethical and compliant:
+## **Advanced Enhancements**
 
-- **Advanced Data Validation**: Incorporate advanced AI techniques for improved text and image data validation.
-    ```python
-    from algorethics.data.advanced_validator import AdvancedValidator
+### **Advanced Data Validation**
+We’ve enhanced the data validation with more sophisticated AI techniques for text and image data:
 
-    # Initialize advanced data validator
-    validator = AdvancedValidator()
-    text_validation_result = validator.validate_text("Sample text for advanced validation.")
-    image_validation_result = validator.validate_image("/path/to/image.png")
-    print(text_validation_result, image_validation_result)
-    ```
+```python
+from algorethics.data.advanced_validator import AdvancedValidator
 
-- **Broader Policy Support**: Develop additional policies for emerging ethical concerns in AI, such as bias detection.
-    ```python
-    from algorethics.policies.bias_policy import BiasPolicy
+# Initialize the advanced validator
+validator = AdvancedValidator()
 
-    # Initialize bias policy
-    bias_policy = BiasPolicy()
-    model_compliance = bias_policy.check_bias("/path/to/your/model")
-    print("Bias compliance:", model_compliance)
-    ```
+# Validate a text and image file
+text_validation_result = validator.validate_text("Sample text for advanced validation.")
+image_validation_result = validator.validate_image("/path/to/image.png")
 
-- **Integration with AI Ethics Frameworks**: Expand the library to support integration with existing AI ethics frameworks and guidelines.
-    ```python
-    from algorethics.integration import FrameworkIntegrator
+print(text_validation_result, image_validation_result)
+```
 
-    # Integrate with an AI ethics framework
-    integrator = FrameworkIntegrator()
-    framework_compliance = integrator.integrate("/path/to/your/model")
-    print("Framework integration compliance:", framework_compliance)
-    ```
+### **Real-time Monitoring**
+We are working on **real-time monitoring** to continuously validate and ensure compliance as data is processed:
 
-- **Real-time Ethical Monitoring**: Implement tools for real-time monitoring of ethical compliance in AI systems.
-    ```python
-    from algorethics.monitoring import RealTimeMonitor
+```python
+from algorethics.monitoring import RealTimeMonitor
 
-    # Initialize real-time monitor
-    monitor = RealTimeMonitor()
-    compliance_status = monitor.monitor("/path/to/your/system")
-    print("Real-time compliance status:", compliance_status)
-    ```
+# Initialize the real-time monitor
+monitor = RealTimeMonitor()
 
-- **Enhanced Reporting and Analytics**: Develop customizable reports and analytics to suit different organizational needs.
-    ```python
-    from algorethics.reporting import ReportingToolkit
+# Start monitoring for compliance
+monitor.start_monitoring("/path/to/your/system")
+```
 
-    # Generate a custom report
-    reporting_toolkit = ReportingToolkit()
-    report = reporting_toolkit.generate_report('compliance', '/path/to/your/data')
-    print(report.get_summary())
-    ```
+### **Bias Detection**
+We are introducing advanced bias detection policies to identify bias in AI datasets and models:
 
-- **Machine Learning Libraries**: Examples for TensorFlow, PyTorch, and Scikit-Learn integrations.
-    ```python
-    # TensorFlow Example
-    import tensorflow as tf
-    from algorethics import TensorFlowEthicsValidator
+```python
+from algorethics.policies.bias_policy import BiasPolicy
 
-    model = tf.keras.models.load_model('/path/to/your/model')
-    ethics_validator = TensorFlowEthicsValidator(model)
-    if ethics_validator.validate():
-        print('TensorFlow model is ethically compliant.')
-    else:
-        print('Ethical compliance issues detected in TensorFlow model:', ethics_validator.get_issues())
+# Initialize the bias policy
+bias_policy = BiasPolicy()
 
-    # PyTorch Example
-    import torch
-    from algorethics import PyTorchEthicsValidator
+# Check for bias in a dataset
+bias_result = bias_policy.check_bias('/path/to/dataset.csv')
+print(bias_result)
+```
 
-    model = torch.load('/path/to/your/model')
-    ethics_validator = PyTorchEthicsValidator(model)
-    if ethics_validator.validate():
-        print('PyTorch model is ethically compliant.')
-    else:
-        print('Ethical compliance issues detected in PyTorch model:', ethics_validator.get_issues())
+## **Machine Learning Library Integration**
 
-    # Scikit-Learn Example
-    from sklearn.ensemble import RandomForestClassifier
-    from algorethics import ScikitLearnEthicsValidator
+### **TensorFlow Example**
+```python
+import tensorflow as tf
+from algorethics import TensorFlowEthicsValidator
 
-    model = RandomForestClassifier()
-    model.load('/path/to/your/model')
-    ethics_validator = ScikitLearnEthicsValidator(model)
-    if ethics_validator.validate():
-        print('Scikit-Learn model is ethically compliant.')
-    else:
-        print('Ethical compliance issues detected in Scikit-Learn model:', ethics_validator.get_issues())
-    ```
+# Load a TensorFlow model
+model = tf.keras.models.load_model('/path/to/your/model')
+
+# Initialize the TensorFlow ethics validator
+ethics_validator = TensorFlowEthicsValidator(model)
+
+# Validate the model for ethical compliance
+ethics_validator.validate()
+```
+
+### **PyTorch Example**
+```python
+import torch
+from algorethics import PyTorchEthicsValidator
+
+# Load a PyTorch model
+model = torch.load('/path/to/your/model')
+
+# Initialize the PyTorch ethics validator
+ethics_validator = PyTorchEthicsValidator(model)
+
+# Validate the model for ethical compliance
+ethics_validator.validate()
+```
+
+### **Scikit-Learn Example**
+```python
+from sklearn.ensemble import RandomForestClassifier
+from algorethics import ScikitLearnEthicsValidator
+
+# Load a Scikit-Learn model
+model = RandomForestClassifier()
+model.load('/path/to/your/model')
+
+# Initialize the Scikit-Learn ethics validator
+ethics_validator = ScikitLearnEthicsValidator(model)
+
+# Validate the model for ethical compliance
+ethics_validator.validate()
+```
+
+## **Future Enhancements**
+
+The **Algorethics AI Library** continues to evolve with future plans including:
+
+- **Broader Policy Support**: Expanding the library to cover **bias detection**, **sustainability**, and other emerging ethical concerns.
+- **Integration with AI Ethics Frameworks**: Building plugins to support major AI ethics frameworks such as the **Rome Call for AI Ethics**.
+- **Enhanced Reporting and Analytics**: Providing advanced dashboards and customizable reports to suit different organizational needs.
 
 ## **Contributing**
-We welcome contributions! If you're interested in contributing to Algorethics, please follow these steps:
+
+We welcome contributions! If you're interested in contributing, follow these steps:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
@@ -189,46 +240,39 @@ We welcome contributions! If you're interested in contributing to Algorethics, p
 5. Push to the branch (`git push origin feature-branch`).
 6. Create a Pull Request.
 
-Please ensure your code adheres to the project's coding standards and passes all tests before submitting a PR.
-
-## **License**
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+Make sure your code adheres to the project’s coding standards and passes all tests.
 
 ## **Contact**
-For questions or suggestions, feel free to reach out to [Stephen Antony Venansious](https://algorethics.info/contact.php).
+For any questions or suggestions, feel free to reach out to:
+- **Stephen Antony Venansious** at [Contact Us](https://algorethics.info/contact.php).
 
-## This Project is inspired by Rome Call
-<!-- Footer -->
+---
+
 <div align="center">
   <img src="https://github.com/smartkuttan/Algorethics/blob/main/Romecall.jpg" alt="Romecall" width="600">
 </div>
 
-### About the Rome Call for AI Ethics
+## **About the Rome Call for AI Ethics**
+The **Rome Call for AI Ethics** advocates for human-centered and ethically aligned AI systems. This project aligns with the Rome Call's six core principles:
 
-The Rome Call for AI Ethics is a significant initiative led by the Vatican and various organizations, calling for the development of AI systems that adhere to ethical standards. The initiative emphasizes principles such as human dignity, inclusion, transparency, and accountability in AI technologies.
+- **Human Dignity**: Respect and protect human dignity in all AI-generated content.
+- **Inclusion**: Promote inclusivity and prevent bias in AI outputs.
+- **Transparency**: Ensure AI processes are transparent and understandable.
+- **Accountability**: Maintain accountability with thorough documentation and compliance tracking.
+- **Privacy**: Uphold privacy by safeguarding user data and sensitive information.
+- **Beneficence**: Develop AI technologies that contribute positively to society.
 
-For more information about the Rome Call, visit [Rome Call for AI Ethics](https://www.romecall.org).
+For more information, visit [Rome Call for AI Ethics](https://www.romecall.org).
 
-### Future Directions
+---
 
-To see the future directions of this open-source ethical library, please visit [Algorethics Website](https://algorethics.info).
+© 2024 **Algorethics**. All Rights Reserved.
 
-### Contact Stephen Antony Venansious
 
-**Address:**
+### Notes on the README update:
+- **New Enhancements**: Advanced data validation, bias detection, real-time monitoring,
 
-MRWRA 43  
-Mary Major Mundakkal West  
-Kollam O1  
-Kollam, Kerala 691001  
-India
-
-**Phone/WhatsApp:** +91 91 4897 4612
-
-### Resources
-
-- **Twitter**: Follow the Rome Call on Twitter
-- **YouTube**: Watch related videos on YouTube
-- **Download Rome Call Document**: [Download the Rome Call Paper](https://www.romecall.org/document.pdf)
-
-By adhering to the ethical guidelines set forth in the Rome Call for AI Ethics, the Algorethics AI Library aims to foster a future where AI serves humanity responsibly and respectfully. Join us in this mission to build a more ethical AI landscape.
+ and integration with popular machine learning frameworks have been added.
+- **Certification API**: The process for certification has been clarified and integrated with the ethical compliance check.
+- **Detailed Usage Instructions**: Comprehensive usage instructions with example code for various validation cases (text, images, TensorFlow, PyTorch, Scikit-Learn, etc.).
+- **Future Directions**: Included future enhancements like broader policy support, ethical monitoring, and reporting.
